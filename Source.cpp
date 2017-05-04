@@ -36,13 +36,17 @@ void Menu::chose()
 		break;
 	case 4:
 		h1.load();
-		std::string y;
-		do
-		{
+		std::string ans;
+		
 			std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
-			std::cin >> y;
-			h1.load();
-		} while (y == "TAK");
+			std::cin >> ans;
+			
+			while (ans == "TAK")
+			{
+				h1.load();
+				std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
+				std::cin >> ans;
+			} 
 			break;
 	}
 	
