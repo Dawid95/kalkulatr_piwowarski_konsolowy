@@ -13,17 +13,19 @@ void Menu::show()
 	std::cout << "4. Charakterystyka polskich odmianu chmieli" << std::endl;
 	std::cout << "5. Zakoncz dzialanie porgramu" << std::endl;
 }
-void Menu::chose()
+void Menu::chose()  //funkcja chose wywoluje wszystkie pozostale funkcje z menu
 {
 	Alcohol a1;
 	Gravity_Calc g1;
 	Polish_Hops h1;
+	Menu m1;
 	
-
+	do{			//poczatek petli menu
+		m1.show();
 	std::cout << "Wybierz: ";
 	std::cin >> choice;
-	do
-	{
+	
+	
 		switch (choice)
 		{
 		case 1:
@@ -51,7 +53,7 @@ void Menu::chose()
 			}
 			break;
 		}
-	} while (choice != 5);
+	} while (choice != 5); //przy wcisnieciu 5 konczy dzialanie programu
 	
 }
 

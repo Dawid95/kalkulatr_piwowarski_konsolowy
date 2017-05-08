@@ -11,12 +11,11 @@ int main()
 	setlocale(LC_ALL, "");
 	
 	Menu menu1;
-	menu1.show();
 	menu1.chose();
 
 	
 	
 	
-	system("pause");
+	
     return 0;
 }
