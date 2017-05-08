@@ -11,6 +11,7 @@ void Menu::show()
 	std::cout << "2. Brix to Specific Gravity Calculator" << std::endl;
 	std::cout << "3. Specific Gravity to Brix Calculator" << std::endl;
 	std::cout << "4. Charakterystyka polskich odmianu chmieli" << std::endl;
+	std::cout << "5. Zakoncz dzialanie porgramu" << std::endl;
 }
 void Menu::chose()
 {
@@ -21,34 +22,36 @@ void Menu::chose()
 
 	std::cout << "Wybierz: ";
 	std::cin >> choice;
-	
-	switch (choice)
+	do
 	{
-	case 1:
-		a1.data();
-		a1.CountAlc();
-		break;
-	case 2:
-		g1.brix_to_sg();
-		break;
-	case 3:
-		g1.sg_to_brix();
-		break;
-	case 4:
-		h1.load();
-		std::string ans;
-		
+		switch (choice)
+		{
+		case 1:
+			a1.data();
+			a1.CountAlc();
+			break;
+		case 2:
+			g1.brix_to_sg();
+			break;
+		case 3:
+			g1.sg_to_brix();
+			break;
+		case 4:
+			h1.load();
+			std::string ans;
+
 			std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
 			std::cin >> ans;
-			
+
 			while (ans == "TAK")
 			{
 				h1.load();
 				std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
 				std::cin >> ans;
-			} 
+			}
 			break;
-	}
+		}
+	} while (choice != 5);
 	
 }
 
