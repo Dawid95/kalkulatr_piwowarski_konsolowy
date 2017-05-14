@@ -4,9 +4,11 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
+#include <algorithm> 
 
 void Menu::show()
 {
+	
 	std::cout << "1. Kalkulator zawartosci alkoholu" << std::endl;
 	std::cout << "2. Brix to Specific Gravity Calculator" << std::endl;
 	std::cout << "3. Specific Gravity to Brix Calculator" << std::endl;
@@ -21,6 +23,7 @@ void Menu::chose()  //funkcja chose wywoluje wszystkie pozostale funkcje z menu
 	Menu m1;
 	
 	do{			//poczatek petli menu
+		std::cout << std::endl;
 		m1.show();
 	std::cout << "Wybierz: ";
 	std::cin >> choice;
@@ -44,12 +47,14 @@ void Menu::chose()  //funkcja chose wywoluje wszystkie pozostale funkcje z menu
 
 			std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
 			std::cin >> ans;
+			std::transform(ans.begin(), ans.end(), ans.begin(), ::tolower);
 
-			while (ans == "TAK")
+			while (ans == "tak")
 			{
 				h1.load();
 				std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
 				std::cin >> ans;
+				std::transform(ans.begin(), ans.end(), ans.begin(), ::tolower);
 			}
 			break;
 		}
@@ -90,6 +95,7 @@ void Polish_Hops::load()
 	
 	std::cout << "Wpisz nazwe chmielu: ";
 	std::cin >> hop_name;
+	
 	
 	std::ifstream hop_file;
 	hop_file.open(hop_name+ ".txt", std::ios::in);
