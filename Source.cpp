@@ -22,42 +22,50 @@ void Menu::chose()  //funkcja chose wywoluje wszystkie pozostale funkcje z menu
 	Polish_Hops h1;
 	Menu m1;
 	
-	do{			//poczatek petli menu
+	do {			//poczatek petli menu
 		std::cout << std::endl;
 		m1.show();
-	std::cout << "Wybierz: ";
-	std::cin >> choice;
-	
-	
-		switch (choice)
+		std::cout << "Wybierz: ";
+		std::cin >> choice;
+
+		while (!(std::cin >> choice))
 		{
-		case 1:
-			a1.data();
-			a1.CountAlc();
-			break;
-		case 2:
-			g1.brix_to_sg();
-			break;
-		case 3:
-			g1.sg_to_brix();
-			break;
-		case 4:
-			h1.load();
-			std::string ans;
+			
+			std::cout << "Bledne dane, wybierz opcje 1-5 ";
+			std::cin.clear();
+			std::cin.ignore(10000, '\n');
+		}
 
-			std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
-			std::cin >> ans;
-			std::transform(ans.begin(), ans.end(), ans.begin(), ::tolower);
-
-			while (ans == "tak")
+			switch (choice)
 			{
+			case 1:
+				a1.data();
+				a1.CountAlc();
+				break;
+			case 2:
+				g1.brix_to_sg();
+				break;
+			case 3:
+				g1.sg_to_brix();
+				break;
+			case 4:
 				h1.load();
+				std::string ans;
+
 				std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
 				std::cin >> ans;
 				std::transform(ans.begin(), ans.end(), ans.begin(), ::tolower);
+
+				while (ans == "tak")
+				{
+					h1.load();
+					std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
+					std::cin >> ans;
+					std::transform(ans.begin(), ans.end(), ans.begin(), ::tolower);
+				}
+				break;
 			}
-			break;
-		}
+		
 	} while (choice != 5); //przy wcisnieciu 5 konczy dzialanie programu
 	
 }
