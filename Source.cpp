@@ -13,43 +13,68 @@ void Menu::show()
 	std::cout << "2. Brix to Specific Gravity Calculator" << std::endl;
 	std::cout << "3. Specific Gravity to Brix Calculator" << std::endl;
 	std::cout << "4. Charakterystyka polskich odmianu chmieli" << std::endl;
-	std::cout << "5. Zakoncz dzialanie porgramu" << std::endl;
+	std::cout << "5. Zakoncz dzialanie programu" << std::endl;
 }
 void Menu::chose()  //funkcja chose wywoluje wszystkie pozostale funkcje z menu
 {
-	Alcohol a1;
-	Gravity_Calc g1;
-	Polish_Hops h1;
+	
+	
+	
 	Menu m1;
 	
-	do {			//poczatek petli menu
+	do {			//poczatek petli menu, wykonuje sie dopoki uzytkownik nie wcisnie 5
+
 		std::cout << std::endl;
 		m1.show();
 		std::cout << "Wybierz: ";
 		std::cin >> choice;
 
-		while (!(std::cin >> choice))
+		if (!(std::cin))
 		{
-			
-			std::cout << "Bledne dane, wybierz opcje 1-5 ";
+			std::cout << std::endl;
+			std::cout << "Bledny wybor, sprobuj jeszcze raz ";
+			std::cout << std::endl;
 			std::cin.clear();
 			std::cin.ignore(10000, '\n');
+			continue;
 		}
 
 			switch (choice)
 			{
 			case 1:
-				a1.data();
-				a1.CountAlc();
+			{
+				Alcohol *p = new Alcohol;
+				
+				p->data();
+				p->CountAlc();
+				delete p;
+
 				break;
+			}
+
 			case 2:
-				g1.brix_to_sg();
+			{
+				Gravity_Calc *p = new Gravity_Calc;
+				
+				p->brix_to_sg();
+				delete p;
+
 				break;
+			}
+
 			case 3:
-				g1.sg_to_brix();
+			{
+				Gravity_Calc *p = new Gravity_Calc;
+				
+				p->sg_to_brix();
+				delete p;
 				break;
+			}
 			case 4:
-				h1.load();
+			{
+				Polish_Hops *p = new Polish_Hops;
+				p->load();
+				
 				std::string ans;
 
 				std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
@@ -58,11 +83,19 @@ void Menu::chose()  //funkcja chose wywoluje wszystkie pozostale funkcje z menu
 
 				while (ans == "tak")
 				{
-					h1.load();
+					p->load();
 					std::cout << "Czy chcesz sprawdzic jeszcze jeden chmiel? (TAK/NIE) ";
 					std::cin >> ans;
 					std::transform(ans.begin(), ans.end(), ans.begin(), ::tolower);
 				}
+				delete p;
+
+				break;
+			}
+			default:
+				std::cout << std::endl;
+				std::cout << "Bledny wybor, sprobuj jeszcze raz ";
+				std::cout << std::endl;
 				break;
 			}
 		
@@ -72,10 +105,13 @@ void Menu::chose()  //funkcja chose wywoluje wszystkie pozostale funkcje z menu
 
 void Alcohol::data()
 {
+	
 	std::cout << "Podaj ekstrakt poczatkowy: ";
 	std::cin >> sg;
 	std::cout << "Podaj ekstrakt koncowy: ";
 	std::cin >> fg;
+
+
 }
 
 void Alcohol::CountAlc()
@@ -120,7 +156,9 @@ void Polish_Hops::load()
 		hop_file.close();
 	}
 	else
-		std::cout << "Nie mogê otworzyæ pliku" << std::endl;
+		std::cout << "Nie mam takiego chmielu w bazie" << std::endl;
 	
 
 }
+
+
