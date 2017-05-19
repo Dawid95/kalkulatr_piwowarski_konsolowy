@@ -10,8 +10,8 @@ void Menu::show()
 {
 	
 	std::cout << "1. Kalkulator zawartosci alkoholu" << std::endl;
-	std::cout << "2. Brix to Specific Gravity Calculator" << std::endl;
-	std::cout << "3. Specific Gravity to Brix Calculator" << std::endl;
+	std::cout << "2. Kalkulator BRIX do SG" << std::endl;
+	std::cout << "3. Kalkulator SG do BRIX" << std::endl;
 	std::cout << "4. Charakterystyka polskich odmianu chmieli" << std::endl;
 	std::cout << "5. Zakoncz dzialanie programu" << std::endl;
 }
