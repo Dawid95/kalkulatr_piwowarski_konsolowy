@@ -142,7 +142,7 @@ void Polish_Hops::load()
 	
 	
 	std::ifstream hop_file;
-	hop_file.open(hop_name+ ".txt", std::ios::in);
+	hop_file.open("hops/"+hop_name+ ".txt", std::ios::in);
 	
 	std::string str;
 
