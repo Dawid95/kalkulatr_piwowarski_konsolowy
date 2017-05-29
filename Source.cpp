@@ -106,24 +106,37 @@ void Menu::chose()  //funkcja chose wywoluje wszystkie pozostale funkcje z menu
 void Alcohol::data()
 {
 
-	for (;;)	//petla wykonuje sie jesli uzytkownik wpisze wartosc nie-liczbowa
+	for(;;)		//petla wykonuje sie jesli uzytkownik wpisze wartosc nie-liczbowa
 	{
 		std::cout << "Podaj ekstrakt poczatkowy: ";
 		std::cin >> sg;
-
+		
 		if (!(std::cin))	//sprawdza czy uzytkownik wprowadza liczbe
 		{
 			std::cout << std::endl;
-			std::cout << "Bledny wybor, sprobuj jeszcze raz ";
+			std::cout << "Bledna wartosc, sprobuj jeszcze raz ";
 			std::cout << std::endl;
 			std::cin.clear();
-			std::cin.ignore(10000, '\n');
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			continue;
 		}
 		break;
-
+	}
+	for (;;)	//petla wykonuje sie jesli uzytkownik wpisze wartosc nie-liczbowa
+	{
 		std::cout << "Podaj ekstrakt koncowy: ";
 		std::cin >> fg;
+		
+		if (!(std::cin))	//sprawdza czy uzytkownik wprowadza liczbe
+		{
+			std::cout << std::endl;
+			std::cout << "Bledna wartosc, sprobuj jeszcze raz ";
+			std::cout << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
+		break;
 	}
 	
 
@@ -133,20 +146,48 @@ void Alcohol::data()
 void Alcohol::CountAlc()
 {
 	double alc = (sg - fg) / 1.938;
-	std::cout<<"Zawartosc alkoholu wynosi: " << std::setprecision(3)<<alc<<"%"<<std::endl;
+	std::cout<<std::endl<<"Zawartosc alkoholu wynosi: " << std::setprecision(3)<<alc<<"%"<<std::endl;
 }
 
 void Gravity_Calc::brix_to_sg()
 {
-	std::cout << "Podaj ekstrakt w brix: " << std::endl;
-	std::cin >> brix;
+	for (;;)		//petla wykonuje sie jesli uzytkownik wpisze wartosc nie-liczbowa
+	{
+		std::cout << "Podaj ekstrakt w brix: " << std::endl;
+		std::cin >> brix;
+		
+		if (!(std::cin))	//sprawdza czy uzytkownik wprowadza liczbe
+		{
+			std::cout << std::endl;
+			std::cout << "Bledna wartosc, sprobuj jeszcze raz ";
+			std::cout << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
+		break;
+	}
 	std::cout << "Ekstrakt w sg wynosi " << (brix / (258.6 - ((brix / 258.2)*227.1))) + 1 << std::endl;
 }
 
 void Gravity_Calc::sg_to_brix()
 {
-	std::cout << "Podaj ekstrakt w sg: " << std::endl;
-	std::cin >> sg;
+	for (;;)		//petla wykonuje sie jesli uzytkownik wpisze wartosc nie-liczbowa
+	{
+		std::cout << "Podaj ekstrakt w sg: " << std::endl;
+		std::cin >> sg;
+		
+		if (!(std::cin))	//sprawdza czy uzytkownik wprowadza liczbe
+		{
+			std::cout << std::endl;
+			std::cout << "Bledna wartosc, sprobuj jeszcze raz ";
+			std::cout << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
+		break;
+	}
 	std::cout << "Ekstrakt w brix wynosi " << (((182.4601 * sg - 775.6821) * sg + 1262.7794) * sg - 669.5622) << std::endl;
 }
 

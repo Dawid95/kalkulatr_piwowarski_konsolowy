@@ -35,3 +35,7 @@ public:
 	void load();
 };
 
+class IsInt{
+public: 
+	void check();
+};
