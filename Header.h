@@ -34,3 +34,4 @@ private:
 public:
 	void load();
 };
+

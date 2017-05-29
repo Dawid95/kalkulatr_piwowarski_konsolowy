@@ -105,11 +105,27 @@ void Menu::chose()  //funkcja chose wywoluje wszystkie pozostale funkcje z menu
 
 void Alcohol::data()
 {
+
+	for (;;)	//petla wykonuje sie jesli uzytkownik wpisze wartosc nie-liczbowa
+	{
+		std::cout << "Podaj ekstrakt poczatkowy: ";
+		std::cin >> sg;
+
+		if (!(std::cin))	//sprawdza czy uzytkownik wprowadza liczbe
+		{
+			std::cout << std::endl;
+			std::cout << "Bledny wybor, sprobuj jeszcze raz ";
+			std::cout << std::endl;
+			std::cin.clear();
+			std::cin.ignore(10000, '\n');
+			continue;
+		}
+		break;
+
+		std::cout << "Podaj ekstrakt koncowy: ";
+		std::cin >> fg;
+	}
 	
-	std::cout << "Podaj ekstrakt poczatkowy: ";
-	std::cin >> sg;
-	std::cout << "Podaj ekstrakt koncowy: ";
-	std::cin >> fg;
 
 
 }
@@ -160,5 +176,3 @@ void Polish_Hops::load()
 	
 
 }
-
-
